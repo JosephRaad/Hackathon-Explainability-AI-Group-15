@@ -2,73 +2,164 @@
   "primary_attribute": "RaceDesc",
   "primary_label": "Race",
   "baseline": {
-    "accuracy": 0.8392,
-    "disparate_impact": 0.7793,
-    "statistical_parity_difference": -0.2166,
-    "equal_opportunity_difference": -0.148,
-    "average_odds_difference": -0.1988
+    "accuracy": 0.9204,
+    "disparate_impact": 0.6903,
+    "statistical_parity_difference": -0.2771,
+    "equal_opportunity_difference": 0.0202,
+    "average_odds_difference": -0.1746
   },
   "fair_model": {
-    "accuracy": 0.8315,
-    "disparate_impact": 0.9372,
-    "statistical_parity_difference": -0.0611,
-    "equal_opportunity_difference": -0.0879,
-    "average_odds_difference": -0.0259
+    "accuracy": 0.9188,
+    "disparate_impact": 0.6929,
+    "statistical_parity_difference": -0.2737,
+    "equal_opportunity_difference": 0.0222,
+    "average_odds_difference": -0.1683
   },
   "improvement": {
-    "disparate_impact_delta": 0.1579,
-    "spd_delta": 0.1555,
-    "eod_delta": 0.0601,
-    "accuracy_delta": -0.0077
+    "disparate_impact_delta": 0.0026,
+    "spd_delta": 0.0034,
+    "eod_delta": -0.002,
+    "accuracy_delta": -0.0016
   },
   "all_audits": {
     "sex": {
       "baseline": {
-        "accuracy": 0.8392,
-        "disparate_impact": 0.9539,
-        "statistical_parity_difference": -0.0452,
-        "equal_opportunity_difference": -0.015,
-        "average_odds_difference": -0.1028
+        "accuracy": 0.9204,
+        "disparate_impact": 0.9797,
+        "statistical_parity_difference": -0.0178,
+        "equal_opportunity_difference": -0.0127,
+        "average_odds_difference": -0.0371
       },
       "fair_model": {
-        "accuracy": 0.8407,
-        "disparate_impact": 0.9513,
-        "statistical_parity_difference": -0.0479,
-        "equal_opportunity_difference": -0.0107,
-        "average_odds_difference": -0.1183
+        "accuracy": 0.9188,
+        "disparate_impact": 0.9767,
+        "statistical_parity_difference": -0.0205,
+        "equal_opportunity_difference": -0.0203,
+        "average_odds_difference": -0.0307
       },
       "improvement": {
-        "disparate_impact_delta": -0.0026,
+        "disparate_impact_delta": -0.003,
         "spd_delta": -0.0027,
-        "eod_delta": 0.0043,
-        "accuracy_delta": 0.0015
+        "eod_delta": -0.0076,
+        "accuracy_delta": -0.0016
       }
     },
     "race": {
       "baseline": {
-        "accuracy": 0.8392,
-        "disparate_impact": 0.7793,
-        "statistical_parity_difference": -0.2166,
-        "equal_opportunity_difference": -0.148,
-        "average_odds_difference": -0.1988
+        "accuracy": 0.9204,
+        "disparate_impact": 0.6903,
+        "statistical_parity_difference": -0.2771,
+        "equal_opportunity_difference": 0.0202,
+        "average_odds_difference": -0.1746
       },
       "fair_model": {
-        "accuracy": 0.8315,
-        "disparate_impact": 0.9372,
-        "statistical_parity_difference": -0.0611,
-        "equal_opportunity_difference": -0.0879,
-        "average_odds_difference": -0.0259
+        "accuracy": 0.9188,
+        "disparate_impact": 0.6929,
+        "statistical_parity_difference": -0.2737,
+        "equal_opportunity_difference": 0.0222,
+        "average_odds_difference": -0.1683
       },
       "improvement": {
-        "disparate_impact_delta": 0.1579,
-        "spd_delta": 0.1555,
-        "eod_delta": 0.0601,
-        "accuracy_delta": -0.0077
+        "disparate_impact_delta": 0.0026,
+        "spd_delta": 0.0034,
+        "eod_delta": -0.002,
+        "accuracy_delta": -0.0016
       }
     }
   },
-  "n_employees": 653,
-  "high_risk": 15,
-  "medium_risk": 79,
-  "low_risk": 559
+  "n_employees": 3261,
+  "high_risk": 380,
+  "medium_risk": 173,
+  "low_risk": 2708,
+  "department_risk": {
+    "Admin Offices": {
+      "total": 9,
+      "high_risk": 2,
+      "medium_risk": 0,
+      "low_risk": 7,
+      "avg_risk_score": 0.2303,
+      "attrition_rate": 0.2222
+    },
+    "Executive Office": {
+      "total": 1,
+      "high_risk": 0,
+      "medium_risk": 0,
+      "low_risk": 1,
+      "avg_risk_score": 0.0193,
+      "attrition_rate": 0.0
+    },
+    "Human Resources": {
+      "total": 126,
+      "high_risk": 16,
+      "medium_risk": 12,
+      "low_risk": 98,
+      "avg_risk_score": 0.2097,
+      "attrition_rate": 0.1905
+    },
+    "IT/IS": {
+      "total": 50,
+      "high_risk": 10,
+      "medium_risk": 0,
+      "low_risk": 40,
+      "avg_risk_score": 0.2075,
+      "attrition_rate": 0.2
+    },
+    "Production": {
+      "total": 209,
+      "high_risk": 80,
+      "medium_risk": 4,
+      "low_risk": 125,
+      "avg_risk_score": 0.3779,
+      "attrition_rate": 0.3971
+    },
+    "Research & Development": {
+      "total": 1928,
+      "high_risk": 152,
+      "medium_risk": 93,
+      "low_risk": 1683,
+      "avg_risk_score": 0.1419,
+      "attrition_rate": 0.138
+    },
+    "Sales": {
+      "total": 927,
+      "high_risk": 116,
+      "medium_risk": 64,
+      "low_risk": 747,
+      "avg_risk_score": 0.1999,
+      "attrition_rate": 0.205
+    },
+    "Software Engineering": {
+      "total": 11,
+      "high_risk": 4,
+      "medium_risk": 0,
+      "low_risk": 7,
+      "avg_risk_score": 0.3054,
+      "attrition_rate": 0.3636
+    }
+  },
+  "feature_importance": [],
+  "model_info": {
+    "type": "GradientBoostingClassifier",
+    "n_estimators": 150,
+    "learning_rate": 0.08,
+    "max_depth": 3,
+    "n_features": 15,
+    "features": [
+      "EngagementSurvey",
+      "EmpSatisfaction",
+      "SpecialProjectsCount",
+      "Absences",
+      "DaysLateLast30",
+      "YearsAtCompany",
+      "OverTime",
+      "WorkLifeBalance",
+      "Department",
+      "PerformanceScore",
+      "RecruitmentSource",
+      "MaritalStatus",
+      "AgeBracket",
+      "SalaryBand",
+      "satisfaction_trend"
+    ]
+  }
 }
