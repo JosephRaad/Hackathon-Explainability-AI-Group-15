@@ -102,12 +102,15 @@ Terminations by year:
     sat_active = df.loc[df["Termd"] == 0, "EmpSatisfaction"].mean()
     sat_termed = df.loc[df["Termd"] == 1, "EmpSatisfaction"].mean()
 
-    # Top SHAP risk factors from the trained model
+    # Top SHAP risk factors + risk prediction from the trained model
     shap_section = ""
+    risk_section = ""
     try:
         model = xgb.XGBClassifier()
         model.load_model(str(MODEL_PATH))
         X, y = prepare_features(df)
+
+        # SHAP analysis
         explainer = shap.TreeExplainer(model)
         shap_values = explainer(X)
         mean_abs_shap = np.abs(shap_values.values).mean(axis=0)
@@ -118,6 +121,23 @@ Terminations by year:
             for i in top_indices
         )
         shap_section = f"\nTop 5 risk factors (from SHAP explainability analysis):\n{shap_lines}"
+
+        # Risk prediction for active employees
+        active_mask = df["Termd"] == 0
+        active_X = X[active_mask]
+        if len(active_X) > 0:
+            proba = model.predict_proba(active_X)[:, 1]
+            high_risk = (proba > 0.5).sum()
+            medium_risk = ((proba > 0.3) & (proba <= 0.5)).sum()
+            low_risk = (proba <= 0.3).sum()
+            total_active = len(active_X)
+            avg_risk = proba.mean() * 100
+            risk_section = f"""
+Current workforce risk assessment (model predictions for {total_active} active employees):
+  - High risk (>50% turnover probability): {high_risk} employees ({high_risk/total_active*100:.1f}%)
+  - Medium risk (30-50%): {medium_risk} employees ({medium_risk/total_active*100:.1f}%)
+  - Low risk (<30%): {low_risk} employees ({low_risk/total_active*100:.1f}%)
+  - Average turnover probability: {avg_risk:.1f}%"""
     except Exception:
         shap_section = "\nTop risk factors: low engagement, low satisfaction, high absences."
 
@@ -139,6 +159,7 @@ Engagement & satisfaction (active vs terminated):
   - Engagement survey: {eng_active:.2f} vs {eng_termed:.2f}
   - Employee satisfaction: {sat_active:.2f} vs {sat_termed:.2f}
 {shap_section}
+{risk_section}
 """
 
 
