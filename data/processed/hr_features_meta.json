@@ -1,0 +1,73 @@
+{
+  "target": "Termd",
+  "sensitive": [
+    "Sex",
+    "RaceDesc"
+  ],
+  "numeric": [
+    "EngagementSurvey",
+    "EmpSatisfaction",
+    "SpecialProjectsCount",
+    "Absences",
+    "DaysLateLast30"
+  ],
+  "categorical": [
+    "Department",
+    "PerformanceScore",
+    "RecruitmentSource",
+    "MaritalDesc"
+  ],
+  "label_mappings": {
+    "Department": {
+      "0": "Admin Offices",
+      "1": "Executive Office",
+      "2": "Human Resources",
+      "3": "IT/IS",
+      "4": "Production",
+      "5": "Research & Development",
+      "6": "Sales",
+      "7": "Software Engineering"
+    },
+    "PerformanceScore": {
+      "0": "Exceeds",
+      "1": "Fully Meets",
+      "2": "Needs Improvement",
+      "3": "PIP"
+    },
+    "RecruitmentSource": {
+      "0": "CareerBuilder",
+      "1": "Diversity Job Fair",
+      "2": "Employee Referral",
+      "3": "Google Search",
+      "4": "Indeed",
+      "5": "LinkedIn",
+      "6": "On-line Web application",
+      "7": "Other",
+      "8": "Unknown",
+      "9": "Website"
+    },
+    "MaritalDesc": {
+      "0": "Divorced",
+      "1": "Married",
+      "2": "Separated",
+      "3": "Single",
+      "4": "Widowed"
+    },
+    "Sex": {
+      "0": "F",
+      "1": "M"
+    },
+    "RaceDesc": {
+      "0": "American Indian or Alaska Native",
+      "1": "Asian",
+      "2": "Black or African American",
+      "3": "Hispanic",
+      "4": "Two or more races",
+      "5": "Unknown",
+      "6": "White"
+    }
+  },
+  "n_rows": 3261,
+  "attrition_rate": 0.17755289788408463,
+  "source": "data/processed/hr_combined.csv"
+}

@@ -1,0 +1,27 @@
+# TrustedAI Hackathon — Python Dependencies
+# Tested on Python 3.11-3.14 / Windows
+
+# Core data
+pandas
+numpy
+scipy
+
+# Machine learning
+scikit-learn
+xgboost
+imbalanced-learn
+
+# Fairness & ethics
+aif360
+
+# Visualization & dashboard
+streamlit
+plotly
+
+# Anthropic API
+anthropic
+
+# Utilities
+python-dotenv
+matplotlib
+seaborn

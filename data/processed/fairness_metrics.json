@@ -1,0 +1,74 @@
+{
+  "primary_attribute": "RaceDesc",
+  "primary_label": "Race",
+  "baseline": {
+    "accuracy": 0.8392,
+    "disparate_impact": 0.7793,
+    "statistical_parity_difference": -0.2166,
+    "equal_opportunity_difference": -0.148,
+    "average_odds_difference": -0.1988
+  },
+  "fair_model": {
+    "accuracy": 0.8315,
+    "disparate_impact": 0.9372,
+    "statistical_parity_difference": -0.0611,
+    "equal_opportunity_difference": -0.0879,
+    "average_odds_difference": -0.0259
+  },
+  "improvement": {
+    "disparate_impact_delta": 0.1579,
+    "spd_delta": 0.1555,
+    "eod_delta": 0.0601,
+    "accuracy_delta": -0.0077
+  },
+  "all_audits": {
+    "sex": {
+      "baseline": {
+        "accuracy": 0.8392,
+        "disparate_impact": 0.9539,
+        "statistical_parity_difference": -0.0452,
+        "equal_opportunity_difference": -0.015,
+        "average_odds_difference": -0.1028
+      },
+      "fair_model": {
+        "accuracy": 0.8407,
+        "disparate_impact": 0.9513,
+        "statistical_parity_difference": -0.0479,
+        "equal_opportunity_difference": -0.0107,
+        "average_odds_difference": -0.1183
+      },
+      "improvement": {
+        "disparate_impact_delta": -0.0026,
+        "spd_delta": -0.0027,
+        "eod_delta": 0.0043,
+        "accuracy_delta": 0.0015
+      }
+    },
+    "race": {
+      "baseline": {
+        "accuracy": 0.8392,
+        "disparate_impact": 0.7793,
+        "statistical_parity_difference": -0.2166,
+        "equal_opportunity_difference": -0.148,
+        "average_odds_difference": -0.1988
+      },
+      "fair_model": {
+        "accuracy": 0.8315,
+        "disparate_impact": 0.9372,
+        "statistical_parity_difference": -0.0611,
+        "equal_opportunity_difference": -0.0879,
+        "average_odds_difference": -0.0259
+      },
+      "improvement": {
+        "disparate_impact_delta": 0.1579,
+        "spd_delta": 0.1555,
+        "eod_delta": 0.0601,
+        "accuracy_delta": -0.0077
+      }
+    }
+  },
+  "n_employees": 653,
+  "high_risk": 15,
+  "medium_risk": 79,
+  "low_risk": 559
+}
