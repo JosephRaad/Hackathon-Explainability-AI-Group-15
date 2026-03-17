@@ -1,0 +1,76 @@
+{
+  "source": "Kaggle",
+  "n_rows": 1470,
+  "n_columns": 22,
+  "columns": [
+    "employee_id",
+    "Termd",
+    "Sex",
+    "RaceDesc",
+    "MaritalStatus",
+    "Age",
+    "Department",
+    "Position",
+    "Salary",
+    "PerformanceScore",
+    "EngagementSurvey",
+    "EmpSatisfaction",
+    "SpecialProjectsCount",
+    "Absences",
+    "DaysLateLast30",
+    "YearsAtCompany",
+    "OverTime",
+    "WorkLifeBalance",
+    "RecruitmentSource",
+    "TermReason",
+    "departure_cause",
+    "source_dataset"
+  ],
+  "attrition_rate": 0.1612,
+  "n_terminated": 237,
+  "n_active": 1233,
+  "departments": {
+    "Research & Development": 961,
+    "Sales": 446,
+    "Human Resources": 63
+  },
+  "top_department_attrition": "Sales",
+  "avg_age": 36.9,
+  "avg_tenure": 7.0,
+  "avg_engagement": 3.41,
+  "avg_satisfaction": 3.34,
+  "overtime_rate": 0.283,
+  "departure_causes": {
+    "career_growth": 66,
+    "compensation": 53,
+    "management": 41,
+    "work_life_balance": 31,
+    "relocation": 22,
+    "performance": 13,
+    "layoff": 11
+  },
+  "sex_distribution": {
+    "Male": 882,
+    "Female": 588
+  },
+  "performance_distribution": {
+    "Fully Meets": 1244,
+    "Exceeds": 226
+  },
+  "dept_attrition_rates": {
+    "Sales": 0.2063,
+    "Human Resources": 0.1905,
+    "Research & Development": 0.1384
+  },
+  "age_range": [
+    18,
+    60
+  ],
+  "unique_features": [
+    "satisfaction_level",
+    "last_evaluation",
+    "number_project",
+    "average_montly_hours",
+    "sales"
+  ]
+}
