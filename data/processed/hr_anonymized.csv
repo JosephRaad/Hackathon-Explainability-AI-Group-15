@@ -16,13 +16,13 @@ cb8e8993563f,0,Male,Two or more races,Single,Production,Production Technician I,
 eadb870bf961,1,Male,White,Divorced,Production,Production Technician I,Fully Meets,5.0,5,0,1,0,4.5,0,4,On-line Web application,career_growth,dr_rich,The lack of internal mobility is frustrating. I asked about lateral moves twice and was told to wait. I found a company that invests in career development.,declining,46-55,50-70K
 b9e795df6fdd,1,Male,White,Single,Production,Production Technician I,Fully Meets,4.98,4,0,20,0,6.5,1,2,Google Search,performance,dr_rich,The role evolved beyond my current skill set and the training support wasn't sufficient to bridge the gap.,declining,36-45,50-70K
 38182d14999a,0,Female,White,Married,Production,Production Technician II,Exceeds,4.43,3,0,16,0,9.7,1,2,Employee Referral,,dr_rich,,stable,18-25,70-100K
-22149857a971,0,Female,White,Single,Production,Production Technician I,Fully Meets,4.94,5,0,12,0,14.9,0,3,Google Search,,dr_rich,,improving,18-25,50-70K
+22149857a971,0,Female,White,Single,Production,Production Technician I,Fully Meets,4.94,5,0,12,0,15.0,0,3,Google Search,,dr_rich,,improving,18-25,50-70K
 9b311608d45b,1,Female,White,Single,IT/IS,Database Administrator,Fully Meets,4.54,4,5,8,0,1.2,0,4,Google Search,performance,dr_rich,I acknowledge that my recent performance wasn't meeting expectations. I was dealing with personal issues that affected my work.,improving,36-45,100-150K
 bdba564143cd,0,Male,Asian,Single,Production,Production Technician I,Fully Meets,4.26,4,0,13,0,12.7,0,3,LinkedIn,,dr_rich,,improving,46-55,50-70K
 ce831c9af9ca,0,Male,White,Single,Production,Production Technician I,Fully Meets,5.0,3,0,13,0,14.0,0,4,Google Search,,dr_rich,,stable,18-25,50-70K
 5b0342c733e4,0,Female,Asian,Divorced,Production,Production Technician I,Fully Meets,4.27,3,0,2,0,12.6,0,4,Indeed,,dr_rich,,stable,18-25,50-70K
 e21ae47b2361,0,Female,White,Married,Production,Production Technician I,Exceeds,4.97,3,0,19,0,11.7,1,2,Indeed,,dr_rich,,stable,36-45,50-70K
-680f8aa51445,0,Female,White,Single,Production,Production Technician II,Needs Improvement,2.02,3,0,3,2,14.9,0,4,CareerBuilder,,dr_rich,,declining,36-45,50-70K
+680f8aa51445,0,Female,White,Single,Production,Production Technician II,Needs Improvement,2.02,3,0,3,2,15.0,0,4,CareerBuilder,,dr_rich,,declining,36-45,50-70K
 1b9131cbf0ea,1,Female,White,Single,Production,Production Technician II,Fully Meets,4.73,5,0,5,0,3.2,0,4,Google Search,career_growth,dr_rich,"Despite strong performance reviews, there's been no discussion about advancement. I need a role where I can develop new skills and take on more responsibility.",declining,18-25,50-70K
 cec3fc3dd95e,1,Male,Black or African American,Single,IT/IS,Enterprise Architect,Fully Meets,3.46,5,7,2,0,2.0,0,4,LinkedIn,compensation,dr_rich,"After 2 years, my salary hasn't kept pace with market rates. I received an offer that was significantly higher and felt I had no choice but to accept it.",stable,18-25,100-150K
 213ea04e7e7b,0,Female,Black or African American,Married,Admin Offices,Sr. Accountant,Fully Meets,5.0,4,3,4,0,11.1,0,4,Diversity Job Fair,,dr_rich,,improving,36-45,100-150K
@@ -33,7 +33,7 @@ cec3fc3dd95e,1,Male,Black or African American,Single,IT/IS,Enterprise Architect,
 8a228c524401,0,Female,Black or African American,Separated,Production,Production Technician I,Fully Meets,3.45,5,0,17,0,12.3,1,2,Diversity Job Fair,,dr_rich,,stable,18-25,50-70K
 6fd24143a40c,1,Female,Black or African American,Married,Sales,Area Sales Manager,Fully Meets,3.04,5,0,19,1,3.0,1,2,Google Search,compensation,dr_rich,I enjoyed the team but the total compensation package wasn't competitive. Benefits and base salary both fell below industry standard.,declining,18-25,70-100K
 6a5a2e83e1d6,0,Female,Black or African American,Single,Production,Production Technician II,Fully Meets,4.41,4,0,3,0,14.0,0,4,Employee Referral,,dr_rich,,improving,46-55,50-70K
-e709be7fda19,0,Male,White,Married,Production,Production Technician II,Fully Meets,3.32,5,0,15,0,14.9,0,4,Indeed,,dr_rich,,stable,46-55,50-70K
+e709be7fda19,0,Male,White,Married,Production,Production Technician II,Fully Meets,3.32,5,0,15,0,15.0,0,4,Indeed,,dr_rich,,stable,46-55,50-70K
 3f9e23fc7ad4,0,Male,White,Single,Software Engineering,Software Engineering Manager,Fully Meets,3.86,3,5,4,0,14.6,0,4,Google Search,,dr_rich,,stable,18-25,70-100K
 354a74115f72,0,Male,White,Single,Production,Production Manager,Exceeds,5.0,3,0,14,0,10.1,0,3,Indeed,,dr_rich,,stable,36-45,70-100K
 feb76ca61f7d,0,Female,White,Single,Software Engineering,Software Engineer,Fully Meets,4.96,4,6,3,0,12.3,0,4,Indeed,,dr_rich,,improving,36-45,70-100K
@@ -89,7 +89,7 @@ f7c028376602,1,Female,Black or African American,Married,Software Engineering,Sof
 ad6b01038334,0,Female,Black or African American,Married,Production,Production Technician II,Fully Meets,4.34,5,0,17,0,11.7,1,3,LinkedIn,,dr_rich,,improving,46-55,70-100K
 abcc18644fea,0,Female,Black or African American,Single,Production,Production Technician II,Fully Meets,4.09,4,0,7,0,12.1,0,4,LinkedIn,,dr_rich,,improving,36-45,50-70K
 f071146f9e85,1,Female,White,Married,Production,Production Technician I,Fully Meets,3.21,3,0,16,0,4.5,1,2,Google Search,management,dr_rich,There were ongoing communication issues with leadership in my department. Decisions were made without consulting the team and morale suffered.,declining,18-25,50-70K
-7761b7ffe22a,0,Male,White,Married,Production,Production Technician I,PIP,1.5,5,0,15,6,10.8,1,2,Indeed,,dr_rich,,declining,36-45,50-70K
+7761b7ffe22a,0,Male,White,Married,Production,Production Technician I,PIP,1.5,5,0,15,6,10.9,1,2,Indeed,,dr_rich,,declining,36-45,50-70K
 e88afc18c3ca,0,Male,White,Single,IT/IS,Network Engineer,PIP,1.1,3,6,2,3,11.0,1,4,LinkedIn,,dr_rich,,declining,36-45,50-70K
 323cf60c8840,0,Female,White,Married,Production,Production Technician I,Fully Meets,4.98,5,0,19,0,14.2,1,3,Google Search,,dr_rich,,improving,36-45,50-70K
 04fe17a0a70b,1,Male,White,Single,Production,Production Technician II,Fully Meets,4.66,5,0,20,0,2.1,1,2,Google Search,career_growth,dr_rich,The lack of internal mobility is frustrating. I asked about lateral moves twice and was told to wait. I found a company that invests in career development.,improving,36-45,70-100K
@@ -169,7 +169,7 @@ af97a8106365,1,Female,Asian,Single,Production,Production Technician I,Fully Meet
 9880937259c1,0,Female,White,Married,Production,Production Manager,Exceeds,4.15,3,0,11,0,12.5,0,3,Website,,dr_rich,,stable,36-45,70-100K
 d31cf768fa40,1,Female,White,Married,Production,Production Technician I,Fully Meets,3.23,4,0,16,0,7.2,1,2,Indeed,management,dr_rich,My relationship with my manager deteriorated over the past year. Feedback was inconsistent and I felt my contributions weren't recognized.,stable,36-45,50-70K
 8b6143392fd7,0,Male,White,Married,Production,Production Technician II,Fully Meets,3.97,3,0,7,0,12.7,0,4,LinkedIn,,dr_rich,,stable,46-55,50-70K
-449bb94a3f87,0,Female,Black or African American,Single,IT/IS,IT Support,Exceeds,4.72,4,5,14,0,15.1,0,4,Diversity Job Fair,,dr_rich,,improving,36-45,50-70K
+449bb94a3f87,0,Female,Black or African American,Single,IT/IS,IT Support,Exceeds,4.72,4,5,14,0,15.2,0,4,Diversity Job Fair,,dr_rich,,improving,36-45,50-70K
 9ee50f97eff8,1,Female,White,Widowed,Production,Production Technician II,Fully Meets,4.67,4,0,15,0,3.2,0,3,LinkedIn,career_growth,dr_rich,"Despite strong performance reviews, there's been no discussion about advancement. I need a role where I can develop new skills and take on more responsibility.",declining,46-55,50-70K
 6f437200594a,0,Female,Black or African American,Single,Production,Production Technician II,Exceeds,4.24,4,0,19,0,12.6,1,2,Indeed,,dr_rich,,improving,36-45,70-100K
 82533b576d48,0,Female,Black or African American,Married,Production,Production Technician I,Fully Meets,5.0,3,0,6,0,11.1,0,4,Website,,dr_rich,,stable,18-25,50-70K
@@ -242,7 +242,7 @@ b03bc29f41bc,1,Female,Black or African American,Divorced,Production,Production T
 ea11c5af11b9,0,Female,Black or African American,Single,IT/IS,Data Architect,Fully Meets,4.95,3,5,17,0,9.2,1,3,Indeed,,dr_rich,,stable,18-25,150K+
 11557a89e38a,0,Female,White,Separated,Production,Production Technician I,Fully Meets,4.91,4,0,8,0,12.2,0,4,Website,,dr_rich,,improving,18-25,50-70K
 86ebc51e5951,1,Male,White,Single,Production,Production Technician I,Fully Meets,5.0,5,0,4,0,7.4,0,4,Google Search,compensation,dr_rich,"After 7 years, my salary hasn't kept pace with market rates. I received an offer that was significantly higher and felt I had no choice but to accept it.",declining,36-45,50-70K
-d7f3efab6284,0,Male,White,Single,IT/IS,IT Manager - DB,Fully Meets,3.64,5,7,13,0,13.1,0,3,Indeed,,dr_rich,,stable,18-25,100-150K
+d7f3efab6284,0,Male,White,Single,IT/IS,IT Manager - DB,Fully Meets,3.64,5,7,13,0,13.2,0,3,Indeed,,dr_rich,,stable,18-25,100-150K
 ce84d856b3d1,1,Male,Black or African American,Divorced,IT/IS,IT Manager - DB,Fully Meets,4.37,4,6,8,0,3.8,0,4,Diversity Job Fair,compensation,dr_rich,"After 3 years, my salary hasn't kept pace with market rates. I received an offer that was significantly higher and felt I had no choice but to accept it.",improving,18-25,100-150K
 76e51df94f65,0,Female,White,Married,Software Engineering,Software Engineer,Fully Meets,4.27,3,6,2,0,13.4,0,4,Indeed,,dr_rich,,stable,36-45,70-100K
 3c9afacd938d,0,Female,Black or African American,Single,Production,Production Technician I,Needs Improvement,2.59,4,0,4,5,9.7,1,3,Diversity Job Fair,,dr_rich,,stable,18-25,30-50K

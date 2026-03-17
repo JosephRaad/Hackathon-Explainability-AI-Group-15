@@ -16,13 +16,13 @@ Termd,EngagementSurvey,EmpSatisfaction,SpecialProjectsCount,Absences,DaysLateLas
 1,5.0,5,0,1,0,4.5,0,4,4,1,6,0,3,3,0,1,6,eadb870bf961,career_growth,The lack of internal mobility is frustrating. I asked about lateral moves twice and was told to wait. I found a company that invests in career development.,dr_rich,Production Technician I
 1,4.98,4,0,20,0,6.5,1,2,4,1,3,3,2,3,0,1,6,b9e795df6fdd,performance,The role evolved beyond my current skill set and the training support wasn't sufficient to bridge the gap.,dr_rich,Production Technician I
 0,4.43,3,0,16,0,9.7,1,2,4,0,2,1,0,4,2,0,6,38182d14999a,,,dr_rich,Production Technician II
-0,4.94,5,0,12,0,14.9,0,3,4,1,3,3,0,3,1,0,6,22149857a971,,,dr_rich,Production Technician I
+0,4.94,5,0,12,0,15.0,0,3,4,1,3,3,0,3,1,0,6,22149857a971,,,dr_rich,Production Technician I
 1,4.54,4,5,8,0,1.2,0,4,3,1,3,3,2,0,1,0,6,9b311608d45b,performance,I acknowledge that my recent performance wasn't meeting expectations. I was dealing with personal issues that affected my work.,dr_rich,Database Administrator
 0,4.26,4,0,13,0,12.7,0,3,4,1,5,3,3,3,1,1,1,bdba564143cd,,,dr_rich,Production Technician I
 0,5.0,3,0,13,0,14.0,0,4,4,1,3,3,0,3,2,1,6,ce831c9af9ca,,,dr_rich,Production Technician I
 0,4.27,3,0,2,0,12.6,0,4,4,1,4,0,0,3,2,0,1,5b0342c733e4,,,dr_rich,Production Technician I
 0,4.97,3,0,19,0,11.7,1,2,4,0,4,1,2,3,2,0,6,e21ae47b2361,,,dr_rich,Production Technician I
-0,2.02,3,0,3,2,14.9,0,4,4,2,0,3,2,3,0,0,6,680f8aa51445,,,dr_rich,Production Technician II
+0,2.02,3,0,3,2,15.0,0,4,4,2,0,3,2,3,0,0,6,680f8aa51445,,,dr_rich,Production Technician II
 1,4.73,5,0,5,0,3.2,0,4,4,1,3,3,0,3,0,0,6,1b9131cbf0ea,career_growth,"Despite strong performance reviews, there's been no discussion about advancement. I need a role where I can develop new skills and take on more responsibility.",dr_rich,Production Technician II
 1,3.46,5,7,2,0,2.0,0,4,3,1,5,3,0,0,2,1,2,cec3fc3dd95e,compensation,"After 2 years, my salary hasn't kept pace with market rates. I received an offer that was significantly higher and felt I had no choice but to accept it.",dr_rich,Enterprise Architect
 0,5.0,4,3,4,0,11.1,0,4,0,1,1,1,2,0,1,0,2,213ea04e7e7b,,,dr_rich,Sr. Accountant
@@ -33,7 +33,7 @@ Termd,EngagementSurvey,EmpSatisfaction,SpecialProjectsCount,Absences,DaysLateLas
 0,3.45,5,0,17,0,12.3,1,2,4,1,1,2,0,3,2,0,2,8a228c524401,,,dr_rich,Production Technician I
 1,3.04,5,0,19,1,3.0,1,2,6,1,3,1,0,4,0,0,2,6fd24143a40c,compensation,I enjoyed the team but the total compensation package wasn't competitive. Benefits and base salary both fell below industry standard.,dr_rich,Area Sales Manager
 0,4.41,4,0,3,0,14.0,0,4,4,1,2,3,3,3,1,0,2,6a5a2e83e1d6,,,dr_rich,Production Technician II
-0,3.32,5,0,15,0,14.9,0,4,4,1,4,1,3,3,2,1,6,e709be7fda19,,,dr_rich,Production Technician II
+0,3.32,5,0,15,0,15.0,0,4,4,1,4,1,3,3,2,1,6,e709be7fda19,,,dr_rich,Production Technician II
 0,3.86,3,5,4,0,14.6,0,4,7,1,3,3,0,4,2,1,6,3f9e23fc7ad4,,,dr_rich,Software Engineering Manager
 0,5.0,3,0,14,0,10.1,0,3,4,0,4,3,2,4,2,1,6,354a74115f72,,,dr_rich,Production Manager
 0,4.96,4,6,3,0,12.3,0,4,7,1,4,3,2,4,1,0,6,feb76ca61f7d,,,dr_rich,Software Engineer
@@ -89,7 +89,7 @@ Termd,EngagementSurvey,EmpSatisfaction,SpecialProjectsCount,Absences,DaysLateLas
 0,4.34,5,0,17,0,11.7,1,3,4,1,5,1,3,4,1,0,2,ad6b01038334,,,dr_rich,Production Technician II
 0,4.09,4,0,7,0,12.1,0,4,4,1,5,3,2,3,1,0,2,abcc18644fea,,,dr_rich,Production Technician II
 1,3.21,3,0,16,0,4.5,1,2,4,1,3,1,0,3,0,0,6,f071146f9e85,management,There were ongoing communication issues with leadership in my department. Decisions were made without consulting the team and morale suffered.,dr_rich,Production Technician I
-0,1.5,5,0,15,6,10.8,1,2,4,3,4,1,2,3,0,1,6,7761b7ffe22a,,,dr_rich,Production Technician I
+0,1.5,5,0,15,6,10.9,1,2,4,3,4,1,2,3,0,1,6,7761b7ffe22a,,,dr_rich,Production Technician I
 0,1.1,3,6,2,3,11.0,1,4,3,3,5,3,2,3,0,1,6,e88afc18c3ca,,,dr_rich,Network Engineer
 0,4.98,5,0,19,0,14.2,1,3,4,1,3,1,2,3,1,0,6,323cf60c8840,,,dr_rich,Production Technician I
 1,4.66,5,0,20,0,2.1,1,2,4,1,3,3,2,4,1,1,6,04fe17a0a70b,career_growth,The lack of internal mobility is frustrating. I asked about lateral moves twice and was told to wait. I found a company that invests in career development.,dr_rich,Production Technician II
@@ -169,7 +169,7 @@ Termd,EngagementSurvey,EmpSatisfaction,SpecialProjectsCount,Absences,DaysLateLas
 0,4.15,3,0,11,0,12.5,0,3,4,0,9,1,2,4,2,0,6,9880937259c1,,,dr_rich,Production Manager
 1,3.23,4,0,16,0,7.2,1,2,4,1,4,1,2,3,2,0,6,d31cf768fa40,management,My relationship with my manager deteriorated over the past year. Feedback was inconsistent and I felt my contributions weren't recognized.,dr_rich,Production Technician I
 0,3.97,3,0,7,0,12.7,0,4,4,1,5,1,3,3,2,1,6,8b6143392fd7,,,dr_rich,Production Technician II
-0,4.72,4,5,14,0,15.1,0,4,3,0,1,3,2,3,1,0,2,449bb94a3f87,,,dr_rich,IT Support
+0,4.72,4,5,14,0,15.2,0,4,3,0,1,3,2,3,1,0,2,449bb94a3f87,,,dr_rich,IT Support
 1,4.67,4,0,15,0,3.2,0,3,4,1,5,4,3,3,0,0,6,9ee50f97eff8,career_growth,"Despite strong performance reviews, there's been no discussion about advancement. I need a role where I can develop new skills and take on more responsibility.",dr_rich,Production Technician II
 0,4.24,4,0,19,0,12.6,1,2,4,0,4,3,2,4,1,0,2,6f437200594a,,,dr_rich,Production Technician II
 0,5.0,3,0,6,0,11.1,0,4,4,1,9,1,0,3,2,0,2,82533b576d48,,,dr_rich,Production Technician I
@@ -242,7 +242,7 @@ Termd,EngagementSurvey,EmpSatisfaction,SpecialProjectsCount,Absences,DaysLateLas
 0,4.95,3,5,17,0,9.2,1,3,3,1,4,3,0,1,2,0,2,ea11c5af11b9,,,dr_rich,Data Architect
 0,4.91,4,0,8,0,12.2,0,4,4,1,9,2,0,3,1,0,6,11557a89e38a,,,dr_rich,Production Technician I
 1,5.0,5,0,4,0,7.4,0,4,4,1,3,3,2,3,0,1,6,86ebc51e5951,compensation,"After 7 years, my salary hasn't kept pace with market rates. I received an offer that was significantly higher and felt I had no choice but to accept it.",dr_rich,Production Technician I
-0,3.64,5,7,13,0,13.1,0,3,3,1,4,3,0,0,2,1,6,d7f3efab6284,,,dr_rich,IT Manager - DB
+0,3.64,5,7,13,0,13.2,0,3,3,1,4,3,0,0,2,1,6,d7f3efab6284,,,dr_rich,IT Manager - DB
 1,4.37,4,6,8,0,3.8,0,4,3,1,1,0,0,0,1,1,2,ce84d856b3d1,compensation,"After 3 years, my salary hasn't kept pace with market rates. I received an offer that was significantly higher and felt I had no choice but to accept it.",dr_rich,IT Manager - DB
 0,4.27,3,6,2,0,13.4,0,4,7,1,4,1,2,4,2,0,6,76e51df94f65,,,dr_rich,Software Engineer
 0,2.59,4,0,4,5,9.7,1,3,4,2,1,3,0,2,2,0,2,3c9afacd938d,,,dr_rich,Production Technician I
