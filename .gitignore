@@ -1,6 +1,3 @@
-# Raw data (contains PII before anonymization)
-data/raw/
-
 # Python
 __pycache__/
 *.pyc
