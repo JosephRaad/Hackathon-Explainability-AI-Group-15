@@ -302,3 +302,129 @@ trustedai-hr-analytics/
 | Injection detection | 5/5 patterns blocked (17 regex patterns) |
 | Dashboard pages | 5/5 rendering correctly |
 | API key required | No  fully local operation |
+
+---
+
+## 9. Post-Consolidation Improvements (Session 2)
+
+All changes below were made after the initial consolidation and full pipeline test.
+The existing sections above remain accurate as a historical record of that session.
+
+### Changes to merge_datasets.py
+
+**Added `export_source_stats()` function**
+- Runs on each individual dataset before the merge
+- Exports 4 JSON snapshots to `data/processed/`:
+  - `stats_drrich.json` — Dr. Rich source stats
+  - `stats_ibm.json` — IBM source stats
+  - `stats_kaggle.json` — Kaggle source stats
+  - `stats_merged.json` — Combined dataset stats
+- Each JSON captures: row count, attrition rate, department breakdown with
+  per-dept attrition rates, avg age, avg tenure, avg engagement, overtime rate,
+  departure causes, sex distribution, performance distribution
+- Enables per-source querying in the dashboard chatbot
+
+**Added deduplication before processing**
+- IBM loader: `drop_duplicates(subset=["EmployeeNumber"])` — handles duplicate
+  EmployeeNumber rows identified in dataset analysis
+- Kaggle loader: `drop_duplicates(subset=["EmpID"])` — same fix for Kaggle
+
+**`source_dataset` column** — already existed, now explicitly set in each
+loader function for clarity
+
+### Changes to app.py — Chatbot complete rewrite
+
+**Problem diagnosed:** The original `_answer()` function was a hardcoded
+if/elif keyword chain with ~8 trigger patterns and no synonym coverage.
+Questions not matching exact keywords returned the generic fallback.
+The "Claude API call" was real but only triggered after the local matcher
+failed — and the local matcher was failing on all standard questions.
+
+**Root cause of specific failures:**
+- "Which department has highest attrition?" — `department` + `attrition`
+  together were not a trigger pattern
+- "Average monthly income left vs stayed?" — `MonthlyIncome` column absent
+  from `predictions.csv` (model output file only)
+- "Does overtime correlate?" — `OverTime` column stored as 1/0 integers in
+  predictions.csv, so `ot_rates.get("Yes", 0)` always returned 0
+
+**Fix — replaced with `_match_intent()` + `_local_answer()` hybrid:**
+
+| Component | Before | After |
+|---|---|---|
+| Intent categories | 8 | 14 |
+| Keyword synonyms | ~3 per intent | 8–15 per intent |
+| Multi-keyword matching | None | department_attrition requires both dept AND attrition keywords |
+| Salary column search | Exact `MonthlyIncome` only | 8 column name variants |
+| Overtime encoding | String "Yes"/"No" only | Normalises 1/0 integers to Yes/No |
+| Missing data handling | "Not available" dead end | Falls back to IBM benchmark with explanation |
+| Out-of-scope guard | Shared with fallback | Dedicated `_is_out_of_scope()` function |
+
+**New intents added:**
+- `department_attrition` — fires on dept + attrition keyword combination
+- `income_comparison` — searches 8 salary column name variants; uses
+  high-risk flag as proxy when no historical labels present
+- `overtime_attrition` — normalises 1/0 to Yes/No; uses risk_score proxy
+  when Termd column is all-zero in predictions.csv
+- `dataset_source` — reads live stats JSONs to answer provenance questions
+
+**New `load_source_stats()` function added**
+- Cached loader that reads the 4 stats JSON files
+- Called only when `dataset_source` intent fires (zero cost otherwise)
+
+**Quick prompt sidebar updated**
+- "Tell me about each dataset" button added
+- Total quick prompts: 8 → 9
+
+**Claude API model string corrected**
+- `claude-sonnet-4-5-20250514` → `claude-haiku-4-5`
+- Previous string was invalid (model does not exist)
+- Haiku chosen for chatbot: faster response, lower cost, sufficient capability
+
+### Changes to genai_analysis.py
+
+- Claude API model string corrected: `claude-sonnet-4-5-20250514` → `claude-haiku-4-5`
+- No other changes — security pipeline, NLP fallback, and injection detection
+  are all unchanged from consolidation
+
+### Removed files
+
+- `.claude/settings.local.json` — Claude Code workspace artifact added
+  automatically by the Claude Code CLI tool. Contains no project logic.
+  Should be in `.gitignore`, not committed.
+
+### New processed outputs
+
+```
+data/processed/
+├── stats_drrich.json      # Per-source stats snapshot (Dr. Rich, 311 rows)
+├── stats_ibm.json         # Per-source stats snapshot (IBM, 1,470 rows)
+├── stats_kaggle.json      # Per-source stats snapshot (Kaggle, 1,480 rows)
+└── stats_merged.json      # Combined dataset stats (3,261 rows)
+```
+
+### Updated file inventory (additions to Section 7)
+
+The following files are new since the consolidation:
+
+| File | Location | Description |
+|---|---|---|
+| `stats_drrich.json` | `data/processed/` | Dr. Rich per-source stats |
+| `stats_ibm.json` | `data/processed/` | IBM per-source stats |
+| `stats_kaggle.json` | `data/processed/` | Kaggle per-source stats |
+| `stats_merged.json` | `data/processed/` | Merged dataset stats |
+
+All other files from the Section 7 inventory remain unchanged.
+
+### Chatbot verification test results (post-fix)
+
+| Question | Before fix | After fix |
+|---|---|---|
+| "Which department has highest attrition?" | ❌ Generic fallback | ✅ Live dept rates with % |
+| "Gender fairness score after correction?" | ✅ Working | ✅ Enhanced with improvement % |
+| "Show top 5 employees most at risk" | ✅ Partial | ✅ Shows IDs, depts, scores |
+| "Average income left vs stayed?" | ❌ Not available | ✅ Live or benchmark fallback |
+| "Does overtime correlate with attrition?" | ❌ 0.0% / 0.0x | ✅ Live rate or IBM benchmark |
+| "Tell me about each dataset" | ❌ No intent | ✅ Live per-source stats |
+| "What is Capgemini's stock price?" | ✅ Declined | ✅ Declined (dedicated guard) |
+| "Write me a Python function" | ✅ Declined | ✅ Declined (dedicated guard) |
