@@ -1,165 +1,208 @@
-# 🛡️ TrustedAI — HR Talent Retention Platform
+# 🛡️ TrustedAI — HR Attrition Analytics System
 
-> **Hackathon Trusted AI × HR** — Capgemini × ESILV — Group 15  
-> **Themes**: AI & Cybersecurity · Ethical AI
+> *A fair, secure, and explainable HR attrition prediction system built for the Capgemini × ESILV TrustedAI Hackathon.*
 
-## 🎯 Objective
+---
 
-An imaginary company faces high resignation rates and wants to use AI to understand the causes of turnover and retain its talent. TrustedAI is an AI-powered HR analytics platform that:
+## 📌 Objectives
 
-- **Predicts** which employees are at risk of leaving (with risk levels)
-- **Explains** why using SHAP feature importance per prediction
-- **Audits** the model for gender and racial bias using IBM AIF360
-- **Protects** employee data through GDPR-compliant anonymization
-- **Provides** an interactive chatbot for HR to query insights naturally
+This system addresses a real enterprise problem: **predicting employee attrition risk while guaranteeing fairness, protecting privacy, and securing AI inputs.**
 
-## 👤 Personae
+Specifically, the system:
+- Predicts which employees are at risk of leaving (flight risk score)
+- Audits and mitigates gender and racial bias in the predictions
+- Enforces GDPR compliance on all HR data before processing
+- Secures GenAI text analysis against prompt injection attacks
+- Delivers everything through an interactive HR manager dashboard
 
-| Persona | Description |
+---
+
+## 🎯 Scope
+
+| In Scope | Out of Scope |
 |---|---|
-| **HR Director** (Client) | "I need to understand why my employees are leaving and what I can do about it." |
-| **TrustedAI** (Provider) | "We build responsible AI solutions for HR: predictive, explainable, fair, and secure." |
+| Binary attrition prediction (active / terminated) | Real-time streaming data |
+| Gender + Race bias audit (AIF360) | Autonomous HR decision-making |
+| GDPR anonymization pipeline | Employee surveillance |
+| GenAI exit interview analysis | Re-identification from anonymized data |
+| Streamlit HR dashboard | Production deployment |
+
+---
+
+## 👤 Persona
+
+**Sarah — HR Analytics Manager**
+
+Sarah manages a team of 300+ employees across 5 departments. She needs to:
+- Identify employees at risk of leaving *before* they resign
+- Ensure the prediction tool is not discriminating by gender or race
+- Have qualitative context (exit interview summaries) alongside the numbers
+- Demonstrate to legal/compliance that all data handling is GDPR-compliant
+
+TrustedAI is built for Sarah.
+
+---
 
 ## 🏗️ Architecture
 
 ```
-data/
-├── raw/                          # Original datasets (.gitignored)
-│   ├── HRDataset_v14.csv        # Dr. Rich Huebner (~311 employees)
-│   ├── IBM_HR_Attrition.csv     # IBM HR dataset (~1,470 employees)
-│   └── HR_comma_sep.csv         # Kaggle HR dataset (~1,470 employees)
-├── processed/                    # Pipeline outputs
-│   ├── hr_merged.csv            # Step 1: Unified schema
-│   ├── hr_anonymized.csv        # Step 2: GDPR-compliant
-│   ├── hr_features.csv          # Step 3: Model-ready features
-│   ├── hr_features_meta.json    # Feature metadata & mappings
-│   ├── predictions.csv          # Step 4: All predictions + risk scores
-│   ├── fairness_metrics.json    # Bias audit results
-│   ├── model_fair.pkl           # Trained fair model
-│   └── shap_values.pkl          # SHAP explainability data
-docs/
-├── data_card.md
-├── model_card.md
-└── *.png                        # Charts and diagrams
-notebooks/
-└── 00_exploration_and_results.ipynb
-src/
-├── merge_datasets.py            # Step 1: Merge 3 datasets + enrich
-├── anonymize.py                 # Step 2: GDPR anonymization
-├── preprocess.py                # Step 3: Feature engineering
-├── bias_audit.py                # Step 4: AIF360 + SHAP + model
-├── model_baseline.py            # Pipeline orchestrator
-├── app.py                       # Streamlit dashboard
-└── genai_analysis.py            # Exit interview NLP + security
+┌─────────────────────────────────────────────────────────────┐
+│                    TrustedAI Architecture                   │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  HRDataset_v14.csv (local only, .gitignored)               │
+│          │                                                  │
+│          ▼                                                  │
+│  ┌──────────────────┐   GDPR Pipeline (anonymize.py)       │
+│  │  Suppression     │ ← Remove Employee_Name, ManagerName  │
+│  │  Pseudonymization│ ← SHA-256 hash EmpID                 │
+│  │  Generalization  │ ← DOB → Age Bracket                  │
+│  │  Masking         │ ← ZIP → Regional prefix              │
+│  └────────┬─────────┘                                       │
+│           │  hr_anonymized.csv                              │
+│           ▼                                                  │
+│  ┌──────────────────┐   Feature Engineering (preprocess.py) │
+│  │  Label Encoding  │                                        │
+│  │  Median Impute   │                                        │
+│  │  Feature Select  │                                        │
+│  └────────┬─────────┘                                       │
+│           │  hr_features.csv                                │
+│           ▼                                                  │
+│  ┌──────────────────────────────────┐                       │
+│  │     bias_audit.py (AIF360)       │                       │
+│  │  ┌───────────┐  ┌─────────────┐ │                       │
+│  │  │ Baseline  │  │ Reweighing  │ │                       │
+│  │  │  Model    │─▶│  Fair Model │ │                       │
+│  │  └───────────┘  └─────────────┘ │                       │
+│  │  Audit: Sex + RaceDesc           │                       │
+│  └────────┬─────────────────────────┘                       │
+│           │  predictions.csv + fairness_metrics.json        │
+│           ▼                                                  │
+│  ┌──────────────────────────────────┐                       │
+│  │       Streamlit Dashboard        │                       │
+│  │  Page 1: Flight Risk Table       │                       │
+│  │  Page 2: Fairness Audit Report   │                       │
+│  │  Page 3: Exit Interview Analyzer │ ← Claude API         │
+│  │  Page 4: GDPR Compliance Report  │                       │
+│  └──────────────────────────────────┘                       │
+└─────────────────────────────────────────────────────────────┘
+
+GenAI Security Layer (genai_analysis.py):
+  Input → Sanitize → Injection Detect → Truncate → Claude API → JSON Parse
 ```
 
-## ⚡ Quick Start
+---
 
-### 1. Install dependencies
+## 🚀 Instructions — How to Run
+
+### Prerequisites
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Run the full pipeline
-```bash
-python src/model_baseline.py
-```
-This executes: `merge → anonymize → preprocess → bias_audit` in order.
+### Step 1 — Place the dataset
+Download `HRDataset_v14.csv` and place it in `data/raw/`.
+This folder is `.gitignored` — the raw data never leaves your machine.
 
-### 3. Launch the dashboard
+### Step 2 — Run the full pipeline
 ```bash
+# 1. Anonymize (GDPR compliance)
+python src/anonymize.py
+
+# 2. Feature engineering
+python src/preprocess.py
+
+# 3. Train models + bias audit
+python src/bias_audit.py
+
+# 4. Launch dashboard
 python -m streamlit run src/app.py
 ```
 
-### 4. (Optional) Enable Claude API chatbot
+### Step 3 — Optional: Claude API for GenAI analysis
 ```bash
-export ANTHROPIC_API_KEY=your_key_here
-python -m streamlit run src/app.py
+# Set your API key (Windows)
+set ANTHROPIC_API_KEY=your_key_here
+
+# Or create a .env file (also .gitignored)
+echo "ANTHROPIC_API_KEY=your_key_here" > .env
 ```
-Without an API key, the chatbot uses a local data-driven engine.
 
-## 🔒 AI & Cybersecurity (Theme 1)
+### Step 4 — Run the notebook
+```bash
+cd notebooks
+jupyter notebook 00_exploration_and_results.ipynb
+```
 
-### GDPR Compliance
-The anonymization pipeline applies **4 techniques** on the merged dataset:
+---
 
-| Technique | Applied To | Result |
-|---|---|---|
-| **Suppression** | TermReason (free text) | Removed entirely |
-| **Pseudonymization** | employee_id | Salted SHA-256 hash (12 chars) |
-| **Generalization** | Age, Salary | Brackets (18-25, 26-35...) / Bands |
-| **Perturbation** | EngagementSurvey, Absences | Deterministic noise (±ε) |
+## 🗂️ Repository Structure
 
-**Protected attributes** (Sex, RaceDesc) are kept per EU AI Act Art. 10(5) for mandatory bias testing.
+```
+trustedai-hr-hackathon/
+├── data/
+│   ├── raw/                    # .gitignored — never committed
+│   └── processed/              # Anonymized outputs
+├── src/
+│   ├── anonymize.py            # GDPR pipeline
+│   ├── preprocess.py           # Feature engineering
+│   ├── bias_audit.py           # AIF360 audit + mitigation
+│   ├── genai_analysis.py       # Claude API + injection guard
+│   └── app.py                  # Streamlit dashboard
+├── notebooks/
+│   └── 00_exploration_and_results.ipynb
+├── docs/
+│   ├── architecture.png
+│   ├── data_card.md
+│   └── model_card.md
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── executive_summary.md
+```
 
-### Prompt Injection Protection
-The exit interview analyzer uses a **5-layer security pipeline**:
-1. Input sanitization (control character removal)
-2. Regex-based injection pattern detection (17 patterns)
-3. Length cap at 3,000 characters
-4. Role-locked system prompt (JSON-only output)
-5. Output validation and parsing
+---
 
-### EU AI Act Classification
-This system is classified as **Annex III, Category 4 — HIGH RISK** (AI in employment decisions).
+## 📊 Dataset
 
-| Requirement | Implementation |
+- **Name:** Dr. Rich HRDataset_v14
+- **Source:** [Kaggle — HR Analytics](https://www.kaggle.com/datasets/rhuebner/human-resources-data-set)
+- **Size:** 311 employees, 36 columns (original) → 26 columns (anonymized)
+- **Target:** `Termd` (0 = active, 1 = terminated)
+- **Termination rate:** 33.4%
+
+See `docs/data_card.md` for full PII handling documentation.
+
+---
+
+## 🔬 Technical Stack
+
+| Component | Technology |
 |---|---|
-| Risk Management (Art. 9) | AIF360 bias audit pipeline |
-| Data Governance (Art. 10) | GDPR anonymization pipeline |
-| Transparency (Art. 13) | Model Card, Data Card, SHAP |
-| Human Oversight (Art. 14) | Advisory only — no autonomous decisions |
-| Robustness (Art. 15) | Cross-validated, injection-protected |
+| ML Model | Gradient Boosting Classifier (scikit-learn) |
+| Fairness Auditing | IBM AIF360 (Reweighing) |
+| GDPR Pipeline | Custom Python (hashlib, pandas) |
+| GenAI Analysis | Anthropic Claude API |
+| Dashboard | Streamlit |
+| Visualization | Matplotlib, Seaborn |
 
-## ⚖️ Ethical AI (Theme 2)
+---
 
-### Bias Audit with IBM AIF360
-- **Protected attributes**: Sex (Gender) and RaceDesc (Race)
-- **Method**: AIF360 Reweighing — adjusts training weights to equalize outcomes
-- **Metrics**: Statistical Parity Difference (SPD), Disparate Impact (DI), Equal Opportunity Difference (EOD)
-- **Threshold**: SPD < ±0.10 (industry standard)
-- Protected attributes are **excluded from model features** and used only for auditing
+## ⚖️ Responsible AI
 
-### Explainability with SHAP
-- **SHAP** (SHapley Additive exPlanations) computes feature importance
-- Per-prediction explanations: "Employee X is high risk because their engagement is low and absences are high"
-- Global feature importance ranking displayed on the dashboard
+- **Bias tested:** Gender (Sex) and Race (RaceDesc)
+- **Metrics used:** Disparate Impact, Statistical Parity Difference, Equal Opportunity Difference
+- **Mitigation:** AIF360 Reweighing (pre-processing)
+- **Result:** Gender SPD reduced from 0.112 (❌ BIASED) to 0.053 (✅ FAIR)
+- **Human oversight:** Tool is advisory only — no autonomous HR decisions
+- **EU AI Act:** System designed for Annex III High-Risk AI compliance
 
-## 📊 Model Details
+---
 
-| Property | Value |
-|---|---|
-| Algorithm | Gradient Boosting Classifier |
-| Estimators | 150 |
-| Max Depth | 3 |
-| Learning Rate | 0.08 |
-| Features | 15 (numeric + encoded categorical) |
-| Protected Attributes | Excluded from features, audited separately |
-| Fairness Method | AIF360 Reweighing (pre-processing) |
-| Explainability | SHAP TreeExplainer |
+## 👥 Team
 
-## 🤖 Chatbot Capabilities
+Built during the Capgemini × ESILV TrustedAI Hackathon — March 2025.
 
-The AI chatbot can answer data-driven questions such as:
-- "How many high-risk employees per department?"
-- "What are the main departure causes?"
-- "What measures to reduce attrition?"
-- "Explain the bias audit results"
-- "What is the EU AI Act risk level?"
-- "How does the model work?"
+---
 
-It queries live prediction data and returns specific numbers and recommendations.
-
-## 📋 Deliverables Checklist
-
-- [x] Clear README with objectives, scope, personae, instructions
-- [x] Technical documentation (Data Card, Model Card)
-- [x] Architecture scheme
-- [x] Data Card & Model Card
-- [x] Demo-ready Streamlit dashboard
-- [x] Executive summary
-- [x] Reproducible pipeline (`python src/model_baseline.py`)
-
-## 👥 Team — Group 15
-
-Capgemini × ESILV TrustedAI Hackathon 2025
+*"Code that works. Models that are fair. Data that is safe."*
