@@ -17,13 +17,24 @@ st.set_page_config(page_title="TrustedAI | HR Analytics", page_icon="🛡️", l
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-html, body, [class*="css"], .stApp { font-family: 'DM Sans', sans-serif !important; background: #F0F2F5 !important; }
+html, body, [class*="css"], .stApp { font-family: 'DM Sans', sans-serif !important; background: #F0F2F5 !important; color-scheme: light !important; }
 section[data-testid="stSidebar"] { background: #171E2E !important; border-right: 1px solid #252D40 !important; }
 section[data-testid="stSidebar"] > div { background: #171E2E !important; }
 .main > div { padding-top: 0 !important; }
 .block-container { padding: 0 !important; max-width: 100% !important; }
 .stButton > button { background: #E8580A !important; color: #fff !important; border: none !important; border-radius: 6px !important; font-weight: 600 !important; font-size: 13px !important; padding: 8px 20px !important; }
 .stButton > button:hover { background: #C94D09 !important; }
+/* Disable sidebar drag-resize */
+[data-testid="stSidebarResizeHandle"] { display: none !important; }
+section[data-testid="stSidebar"] { min-width: 280px !important; max-width: 280px !important; width: 280px !important; }
+/* Sidebar: hide collapse/expand buttons — always open */
+[data-testid="stSidebarCollapseButton"] { display: none !important; }
+[data-testid="stSidebarCollapsedControl"] { display: none !important; }
+/* Sidebar radio labels readable */
+section[data-testid="stSidebar"] .stRadio label { color: #C5D0E6 !important; }
+section[data-testid="stSidebar"] .stRadio label p { color: #C5D0E6 !important; }
+/* Hide Streamlit settings menu (dark mode toggle) */
+[data-testid="stMainMenu"] { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -86,14 +97,14 @@ def alert(msg, kind="info"):
 
 # ── SIDEBAR (FIXED — no absolute footer) ─────────────────────────────────────
 with st.sidebar:
-    st.markdown('<div style="padding:18px 16px 12px;"><div style="display:flex;align-items:center;gap:10px;"><div style="background:#E8580A;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;">🛡️</div><div><div style="font-size:14px;font-weight:700;color:#fff;">TrustedAI</div><div style="font-size:10px;color:#4A5A78;letter-spacing:0.8px;text-transform:uppercase;">HR Analytics · Group 15</div></div></div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="padding:18px 16px 12px;"><div style="display:flex;align-items:center;gap:10px;"><div style="background:#E8580A;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;">🛡️</div><div><div style="font-size:14px;font-weight:700;color:#fff;">TrustedAI</div><div style="font-size:10px;color:#8899BB;letter-spacing:0.8px;text-transform:uppercase;">HR Analytics · Group 15</div></div></div></div>', unsafe_allow_html=True)
     m = load_metrics(); df_side = load_predictions()
     spd_val = m["fair_model"]["statistical_parity_difference"]; spd_ok = abs(spd_val) < 0.10
     n_h = int((df_side["risk_level"]=="High").sum()) if "risk_level" in df_side.columns else 0
-    st.markdown(f'<div style="background:#1E2840;border:1px solid #2A3550;border-radius:8px;padding:10px 14px;margin:0 8px 14px;"><div style="font-size:10px;color:#4A5A78;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px;">Model Status</div><div style="font-size:12px;color:#8899BB;line-height:2.1;">Employees: <span style="color:#fff;font-weight:600;">{len(df_side)}</span><br>High risk: <span style="color:#FC8181;font-weight:600;">{n_h}</span><br>SPD: <span style="color:{"#6EE7B7" if spd_ok else "#FC8181"};font-weight:600;">{abs(spd_val):.3f} {"✓" if spd_ok else "✗"}</span><br>Accuracy: <span style="color:#FBD38D;font-weight:600;">{m["fair_model"]["accuracy"]:.1%}</span></div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:#1E2840;border:1px solid #2A3550;border-radius:8px;padding:10px 14px;margin:0 8px 14px;"><div style="font-size:10px;color:#8899BB;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px;">Model Status</div><div style="font-size:12px;color:#8899BB;line-height:2.1;">Employees: <span style="color:#fff;font-weight:600;">{len(df_side)}</span><br>High risk: <span style="color:#FC8181;font-weight:600;">{n_h}</span><br>SPD: <span style="color:{"#6EE7B7" if spd_ok else "#FC8181"};font-weight:600;">{abs(spd_val):.3f} {"✓" if spd_ok else "✗"}</span><br>Accuracy: <span style="color:#FBD38D;font-weight:600;">{m["fair_model"]["accuracy"]:.1%}</span></div></div>', unsafe_allow_html=True)
     page = st.radio("", ["📊  Flight Risk", "⚖️  Fairness Audit", "🤖  AI Chatbot", "💬  Exit Interviews", "📋  Compliance"], label_visibility="collapsed")
     st.markdown("---")
-    st.markdown('<div style="font-size:10px;color:#3A4A68;text-align:center;line-height:1.8;padding-bottom:10px;">Capgemini × ESILV<br>TrustedAI Hackathon · 2025<br><span style="color:#E8580A;">AI & Cybersecurity · Ethical AI</span></div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:10px;color:#8899BB;text-align:center;line-height:1.8;padding-bottom:10px;">Capgemini × ESILV<br>TrustedAI Hackathon · 2025<br><span style="color:#E8580A;">AI & Cybersecurity · Ethical AI</span></div>', unsafe_allow_html=True)
 
 
 # =============================================================================
@@ -335,11 +346,11 @@ elif page == "💬  Exit Interviews":
         panel_header("Interview Analyzer", badge="Injection Detection Active")
         txt = st.text_area("", value=st.session_state.get("iv_text",""), height=180,
                            placeholder="Paste or type exit interview text here...", label_visibility="collapsed")
-        use_api = st.toggle("Use Claude API", value=bool(os.environ.get("ANTHROPIC_API_KEY")))
+        ## use_api = st.toggle("Use Claude API", value=bool(os.environ.get("ANTHROPIC_API_KEY")))
         if st.button("🔍 Analyze Interview", use_container_width=True):
             if txt.strip():
                 with st.spinner("Analyzing..."):
-                    result = analyze_exit_interview(txt, use_claude=use_api)
+                    result = analyze_exit_interview(txt, use_claude=False)
                 if result.get("blocked"):
                     alert(f"<strong>🚫 Security Event:</strong> {result.get('error','Blocked.')} — Input matched injection pattern.", "danger")
                 elif result.get("source") == "off-topic":
