@@ -315,40 +315,40 @@ The existing sections above remain accurate as a historical record of that sessi
 **Added `export_source_stats()` function**
 - Runs on each individual dataset before the merge
 - Exports 4 JSON snapshots to `data/processed/`:
-  - `stats_drrich.json` — Dr. Rich source stats
-  - `stats_ibm.json` — IBM source stats
-  - `stats_kaggle.json` — Kaggle source stats
-  - `stats_merged.json` — Combined dataset stats
+  - `stats_drrich.json`   Dr. Rich source stats
+  - `stats_ibm.json`   IBM source stats
+  - `stats_kaggle.json`   Kaggle source stats
+  - `stats_merged.json`   Combined dataset stats
 - Each JSON captures: row count, attrition rate, department breakdown with
   per-dept attrition rates, avg age, avg tenure, avg engagement, overtime rate,
   departure causes, sex distribution, performance distribution
 - Enables per-source querying in the dashboard chatbot
 
 **Added deduplication before processing**
-- IBM loader: `drop_duplicates(subset=["EmployeeNumber"])` — handles duplicate
+- IBM loader: `drop_duplicates(subset=["EmployeeNumber"])`   handles duplicate
   EmployeeNumber rows identified in dataset analysis
-- Kaggle loader: `drop_duplicates(subset=["EmpID"])` — same fix for Kaggle
+- Kaggle loader: `drop_duplicates(subset=["EmpID"])`   same fix for Kaggle
 
-**`source_dataset` column** — already existed, now explicitly set in each
+**`source_dataset` column**   already existed, now explicitly set in each
 loader function for clarity
 
-### Changes to app.py — Chatbot complete rewrite
+### Changes to app.py   Chatbot complete rewrite
 
 **Problem diagnosed:** The original `_answer()` function was a hardcoded
 if/elif keyword chain with ~8 trigger patterns and no synonym coverage.
 Questions not matching exact keywords returned the generic fallback.
 The "Claude API call" was real but only triggered after the local matcher
-failed — and the local matcher was failing on all standard questions.
+failed   and the local matcher was failing on all standard questions.
 
 **Root cause of specific failures:**
-- "Which department has highest attrition?" — `department` + `attrition`
+- "Which department has highest attrition?"   `department` + `attrition`
   together were not a trigger pattern
-- "Average monthly income left vs stayed?" — `MonthlyIncome` column absent
+- "Average monthly income left vs stayed?"   `MonthlyIncome` column absent
   from `predictions.csv` (model output file only)
-- "Does overtime correlate?" — `OverTime` column stored as 1/0 integers in
+- "Does overtime correlate?"   `OverTime` column stored as 1/0 integers in
   predictions.csv, so `ot_rates.get("Yes", 0)` always returned 0
 
-**Fix — replaced with `_match_intent()` + `_local_answer()` hybrid:**
+**Fix   replaced with `_match_intent()` + `_local_answer()` hybrid:**
 
 | Component | Before | After |
 |---|---|---|
@@ -361,12 +361,12 @@ failed — and the local matcher was failing on all standard questions.
 | Out-of-scope guard | Shared with fallback | Dedicated `_is_out_of_scope()` function |
 
 **New intents added:**
-- `department_attrition` — fires on dept + attrition keyword combination
-- `income_comparison` — searches 8 salary column name variants; uses
+- `department_attrition`   fires on dept + attrition keyword combination
+- `income_comparison`   searches 8 salary column name variants; uses
   high-risk flag as proxy when no historical labels present
-- `overtime_attrition` — normalises 1/0 to Yes/No; uses risk_score proxy
+- `overtime_attrition`   normalises 1/0 to Yes/No; uses risk_score proxy
   when Termd column is all-zero in predictions.csv
-- `dataset_source` — reads live stats JSONs to answer provenance questions
+- `dataset_source`   reads live stats JSONs to answer provenance questions
 
 **New `load_source_stats()` function added**
 - Cached loader that reads the 4 stats JSON files
@@ -384,12 +384,12 @@ failed — and the local matcher was failing on all standard questions.
 ### Changes to genai_analysis.py
 
 - Claude API model string corrected: `claude-sonnet-4-5-20250514` → `claude-haiku-4-5`
-- No other changes — security pipeline, NLP fallback, and injection detection
+- No other changes   security pipeline, NLP fallback, and injection detection
   are all unchanged from consolidation
 
 ### Removed files
 
-- `.claude/settings.local.json` — Claude Code workspace artifact added
+- `.claude/settings.local.json`   Claude Code workspace artifact added
   automatically by the Claude Code CLI tool. Contains no project logic.
   Should be in `.gitignore`, not committed.
 

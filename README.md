@@ -1,4 +1,4 @@
-# 🛡️ TrustedAI — HR Attrition Analytics System
+# 🛡️ TrustedAI   HR Attrition Analytics System
 
 > *A fair, secure, and explainable HR attrition prediction system built for the Capgemini × ESILV TrustedAI Hackathon.*
 
@@ -31,7 +31,7 @@ Specifically, the system:
 
 ## 👤 Persona
 
-**Sarah — HR Analytics Manager**
+**Sarah   HR Analytics Manager**
 
 Sarah manages a team of 300+ employees across 5 departments. She needs to:
 - Identify employees at risk of leaving *before* they resign
@@ -50,7 +50,7 @@ TrustedAI is built for Sarah.
 │                    TrustedAI Architecture                   │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  3 Raw Datasets (data/raw/ — .gitignored)                   │
+│  3 Raw Datasets (data/raw/   .gitignored)                   │
 │  Dr. Rich (311) + IBM (1,470) + Kaggle (1,480)              │
 │          │                                                  │
 │          ▼  merge_datasets.py                               │
@@ -108,40 +108,40 @@ Chatbot Hybrid Engine (app.py):
 
 ---
 
-## 🚀 Instructions — How to Run
+## 🚀 Instructions   How to Run
 
 ### Prerequisites
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 1 — Place the datasets
+### Step 1   Place the datasets
 Place the following files in `data/raw/`:
 - `HRDataset_v14.csv` (required)
 - `IBM_HR_Attrition.csv` (optional)
 - `HR_comma_sep.csv` (optional)
 
-This folder is `.gitignored` — raw data never leaves your machine.
+This folder is `.gitignored`   raw data never leaves your machine.
 
-### Step 2 — Run the full pipeline
+### Step 2   Run the full pipeline
 ```bash
 python src/model_baseline.py
 ```
 
 This runs all 4 steps in order:
-1. **Merge** — Combines datasets into unified schema (3,261 rows) + exports per-source stats JSONs
-2. **Anonymize** — GDPR pipeline (4 techniques)
-3. **Preprocess** — Feature engineering (15 features + 2 protected)
-4. **Bias Audit** — AIF360 Reweighing + SHAP explainability
+1. **Merge**   Combines datasets into unified schema (3,261 rows) + exports per-source stats JSONs
+2. **Anonymize**   GDPR pipeline (4 techniques)
+3. **Preprocess**   Feature engineering (15 features + 2 protected)
+4. **Bias Audit**   AIF360 Reweighing + SHAP explainability
 
-### Step 3 — Launch the dashboard
+### Step 3   Launch the dashboard
 ```bash
 python -m streamlit run src/app.py
 ```
 
-The dashboard runs **fully locally** — no API key required.
+The dashboard runs **fully locally**   no API key required.
 
-### Step 4 — Optional: Claude API for GenAI analysis
+### Step 4   Optional: Claude API for GenAI analysis
 ```bash
 export ANTHROPIC_API_KEY=your_key_here
 # Or create a .env file (also .gitignored)
@@ -151,7 +151,7 @@ When the API key is set, the chatbot escalates complex freeform HR questions
 to Claude automatically. Without it, the 14-intent local engine handles all
 standard queries.
 
-### Step 5 — Run the notebook
+### Step 5   Run the notebook
 ```bash
 jupyter notebook notebooks/00_exploration_and_results.ipynb
 ```
@@ -163,7 +163,7 @@ jupyter notebook notebooks/00_exploration_and_results.ipynb
 ```
 trustedai-hr-analytics/
 ├── data/
-│   ├── raw/                          # .gitignored — never committed
+│   ├── raw/                          # .gitignored   never committed
 │   └── processed/                    # Pipeline outputs
 │       ├── hr_merged.csv             #   3,261 rows × 24 cols
 │       ├── hr_anonymized.csv         #   3,261 rows × 23 cols (0 PII)
@@ -203,9 +203,9 @@ trustedai-hr-analytics/
 
 ## 📊 Dataset
 
-- **Primary:** Dr. Rich HRDataset_v14 — 311 employees, 36 columns
-- **Secondary:** IBM HR Attrition — 1,470 employees
-- **Secondary:** Kaggle HR Analytics — 1,480 employees
+- **Primary:** Dr. Rich HRDataset_v14   311 employees, 36 columns
+- **Secondary:** IBM HR Attrition   1,470 employees
+- **Secondary:** Kaggle HR Analytics   1,480 employees
 - **Combined:** 3,261 rows after schema-normalized merge
 - **Target:** `Termd` (0 = active, 1 = terminated)
 - **Combined attrition rate:** 17.8%
@@ -237,7 +237,7 @@ See `docs/data_card.md` for full PII handling documentation.
 - **Mitigation:** AIF360 Reweighing (pre-processing) + group-threshold equalization (post-processing)
 - **Result:** Race SPD reduced from -0.238 (❌ BIASED) to 0.028 (✅ FAIR)
 - **Gender:** Already within threshold (SPD = -0.018)
-- **Human oversight:** Tool is advisory only — no autonomous HR decisions
+- **Human oversight:** Tool is advisory only   no autonomous HR decisions
 - **EU AI Act:** System designed for Annex III High-Risk AI compliance
 
 ---
@@ -271,7 +271,7 @@ Claude API when a key is available, with graceful local fallback otherwise.
 
 ## 👥 Team
 
-Built during the **Capgemini × ESILV TrustedAI Hackathon** — March 2025.
+Built during the **Capgemini × ESILV TrustedAI Hackathon**   March 2025.
 
 ---
 

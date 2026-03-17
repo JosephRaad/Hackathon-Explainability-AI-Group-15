@@ -1,12 +1,12 @@
-# Executive Summary — TrustedAI HR Analytics
+# Executive Summary   TrustedAI HR Analytics
 
 ## The Problem
 
-HR attrition prediction touches some of the most sensitive personal data in any organization. Existing ML systems often operate as black boxes — biased by historical patterns, non-compliant with GDPR, and vulnerable to AI manipulation attacks. The EU AI Act (Annex III, Category 4) now classifies employment AI as high-risk, demanding transparency, fairness, and human oversight.
+HR attrition prediction touches some of the most sensitive personal data in any organization. Existing ML systems often operate as black boxes   biased by historical patterns, non-compliant with GDPR, and vulnerable to AI manipulation attacks. The EU AI Act (Annex III, Category 4) now classifies employment AI as high-risk, demanding transparency, fairness, and human oversight.
 
 ## Our Solution
 
-TrustedAI HR Analytics is a unified system that combines **predictive analytics**, **algorithmic fairness**, **GDPR compliance**, and **GenAI security** into a single auditable pipeline — built for an HR Manager persona ("Sarah") who needs actionable, trustworthy insights.
+TrustedAI HR Analytics is a unified system that combines **predictive analytics**, **algorithmic fairness**, **GDPR compliance**, and **GenAI security** into a single auditable pipeline   built for an HR Manager persona ("Sarah") who needs actionable, trustworthy insights.
 
 ### Key Results
 
@@ -36,7 +36,7 @@ Raw HR Data → Multi-Dataset Merge (3 sources, 3,261 rows)
 
 1. **Fairness is not an afterthought.** We detected real bias (Race SPD = -0.238,
    exceeding the ±0.10 threshold) and mitigated it using IBM AIF360 Reweighing +
-   group-specific threshold equalization — achieving SPD = 0.028.
+   group-specific threshold equalization   achieving SPD = 0.028.
 
 2. **Privacy is structural, not cosmetic.** Four GDPR techniques (suppression,
    pseudonymization, generalization, perturbation) applied on the merged dataset
@@ -47,7 +47,7 @@ Raw HR Data → Multi-Dataset Merge (3 sources, 3,261 rows)
    injection before it reaches the model. 17 injection patterns detected and blocked.
 
 4. **The system is advisory, not autonomous.** Every prediction requires human HR
-   review. No automated employment decisions — fully EU AI Act compliant.
+   review. No automated employment decisions   fully EU AI Act compliant.
 
 5. **Runs fully locally.** No API key required. The chatbot answers 14 categories
    of HR analytics questions using live data with no external dependency. When a
@@ -67,10 +67,10 @@ Raw HR Data → Multi-Dataset Merge (3 sources, 3,261 rows)
 - **GenAI:** Claude API (claude-haiku-4-5) with 5-layer security + smart offline NLP fallback
 - **Dashboard:** Streamlit with 5 pages (Flight Risk, Fairness Audit, AI Chatbot,
   Exit Interviews, Compliance)
-- **Chatbot:** 14-intent hybrid engine — synonym-aware local matcher with
+- **Chatbot:** 14-intent hybrid engine   synonym-aware local matcher with
   Claude API escalation for complex questions
 - **Data:** Dr. Rich HRDataset_v14 + IBM HR Attrition + Kaggle HR Analytics
 
 ## Team
 
-Built during the **Capgemini × ESILV TrustedAI Hackathon** — March 2025.
+Built during the **Capgemini × ESILV TrustedAI Hackathon**   March 2025.
