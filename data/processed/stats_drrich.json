@@ -1,0 +1,84 @@
+{
+  "source": "Dr. Rich",
+  "n_rows": 311,
+  "n_columns": 22,
+  "columns": [
+    "employee_id",
+    "Termd",
+    "Sex",
+    "RaceDesc",
+    "MaritalStatus",
+    "Age",
+    "Department",
+    "Position",
+    "Salary",
+    "PerformanceScore",
+    "EngagementSurvey",
+    "EmpSatisfaction",
+    "SpecialProjectsCount",
+    "Absences",
+    "DaysLateLast30",
+    "YearsAtCompany",
+    "OverTime",
+    "WorkLifeBalance",
+    "RecruitmentSource",
+    "TermReason",
+    "departure_cause",
+    "source_dataset"
+  ],
+  "attrition_rate": 0.3344,
+  "n_terminated": 104,
+  "n_active": 207,
+  "departments": {
+    "Production": 209,
+    "IT/IS": 50,
+    "Sales": 31,
+    "Software Engineering": 11,
+    "Admin Offices": 9,
+    "Executive Office": 1
+  },
+  "top_department_attrition": "Production",
+  "avg_age": 15.3,
+  "avg_tenure": 9.5,
+  "avg_engagement": 4.11,
+  "avg_satisfaction": 3.89,
+  "overtime_rate": 0.3055,
+  "departure_causes": {
+    "compensation": 26,
+    "career_growth": 23,
+    "relocation": 18,
+    "management": 16,
+    "performance": 12,
+    "work_life_balance": 9
+  },
+  "sex_distribution": {
+    "Female": 176,
+    "Male": 135
+  },
+  "performance_distribution": {
+    "Fully Meets": 243,
+    "Exceeds": 37,
+    "Needs Improvement": 18,
+    "PIP": 13
+  },
+  "dept_attrition_rates": {
+    "Production": 0.3971,
+    "Software Engineering": 0.3636,
+    "Admin Offices": 0.2222,
+    "IT/IS": 0.2,
+    "Sales": 0.1613,
+    "Executive Office": 0.0
+  },
+  "age_range": [
+    -49,
+    50
+  ],
+  "unique_features": [
+    "RaceDesc",
+    "TermReason",
+    "RecruitmentSource",
+    "SpecialProjectsCount",
+    "DaysLateLast30",
+    "Position"
+  ]
+}
