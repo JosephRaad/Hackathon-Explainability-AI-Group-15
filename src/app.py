@@ -248,7 +248,16 @@ elif page == "🤖  AI Chatbot":
         if any(k in q for k in ["exit","interview","injection","security"]):
             return "**Exit Interview Security:**\n\n5-layer pipeline: sanitization → injection detection (17 patterns) → length cap → role-locked prompt → output validation.\n\nLocal NLP fallback when no API key."
         nh=int((_df["risk_level"]=="High").sum())
-        return f"Monitoring **{len(_df)} employees** ({_df['Termd'].mean():.1%} attrition). **{nh} high risk.**\n\nTry: *\"How many high-risk per department?\"* or *\"What measures to reduce attrition?\"*"
+        return ("I'm sorry, I didn't understand your question. I'm TrustedAI, "
+                "an HR analytics assistant — I can only answer questions related to:\n\n"
+                "- 📊 Employee flight risk & departments\n"
+                "- ⚖️ Fairness & bias audit (SPD, AIF360)\n"
+                "- 🔒 GDPR compliance & anonymization\n"
+                "- 📜 EU AI Act classification\n"
+                "- 🧠 Model details & explainability\n"
+                "- 💡 Retention measures & recommendations\n"
+                "- 📋 Departure causes\n\n"
+                "Try: *\"How many high-risk employees per department?\"*")
 
     def _claude_resp(history):
         nh=int((_df["risk_level"]=="High").sum()); nm=int((_df["risk_level"]=="Medium").sum())
@@ -333,6 +342,8 @@ elif page == "💬  Exit Interviews":
                     result = analyze_exit_interview(txt, use_claude=use_api)
                 if result.get("blocked"):
                     alert(f"<strong>🚫 Security Event:</strong> {result.get('error','Blocked.')} — Input matched injection pattern.", "danger")
+                elif result.get("source") == "off-topic":
+                    alert(f"<strong>⚠️ Off-topic input:</strong> {result.get('error','')}", "warning")
                 elif "error" in result:
                     alert(f"Analysis failed: {result['error']}", "danger")
                 else:

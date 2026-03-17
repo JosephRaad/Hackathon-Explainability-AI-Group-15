@@ -131,6 +131,27 @@ def _analyze_nlp(text: str) -> dict:
     """Local NLP analysis without any API call."""
     low = text.lower()
 
+    # Off-topic detection: check if text contains ANY HR-related keywords
+    hr_keywords = [
+        "salary", "pay", "compensation", "manager", "boss", "team", "work",
+        "job", "role", "position", "career", "promotion", "growth", "leave",
+        "quit", "resign", "fired", "laid off", "layoff", "company", "office",
+        "colleague", "hr", "human resources", "overtime", "hours", "stress",
+        "burnout", "balance", "culture", "environment", "feedback", "review",
+        "performance", "training", "development", "benefit", "insurance",
+        "remote", "flexibility", "commute", "toxic", "harassment", "conflict",
+        "discrimination", "morale", "engagement", "satisfaction", "workload",
+        "deadline", "pressure", "recognition", "valued", "appreciated",
+        "underpaid", "overworked", "exhausted", "relocated", "transfer",
+        "department", "project", "client", "employee", "staff", "tenure",
+    ]
+    if not any(kw in low for kw in hr_keywords):
+        return {
+            "error": "The text provided does not appear to be an exit interview or HR-related feedback. Please provide actual employee departure feedback for analysis.",
+            "blocked": False,
+            "source": "off-topic",
+        }
+
     # Theme detection
     theme_scores = {}
     for theme, keywords in _THEME_KEYWORDS.items():
