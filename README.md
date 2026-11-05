@@ -271,7 +271,7 @@ Claude API when a key is available, with graceful local fallback otherwise.
 
 ## 👥 Team
 
-Built during the **Capgemini × ESILV TrustedAI Hackathon**   March 2025.
+Built during the **Capgemini × ESILV TrustedAI Hackathon**   March 2026.
 
 ---
 
